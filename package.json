@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-noodle",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "An easy to use eslint config generator to help me setup faster.",
 	"repository": {
 		"type": "git",
@@ -21,7 +21,8 @@
 	"main": "index.js",
 	"types": "index.d.ts",
 	"files": [
-		"index.js"
+		"index.js",
+		"index.d.ts"
 	],
 	"scripts": {
 		"emit": "tsc -p ./tsconfig.json"
