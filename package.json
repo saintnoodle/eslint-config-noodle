@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-noodle",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "An easy to use eslint config generator to help me setup faster.",
 	"repository": {
 		"type": "git",
@@ -17,8 +17,11 @@
 		"url": "https://noodle.moe"
 	},
 	"license": "MIT",
-	"module": "index.ts",
 	"type": "module",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
 	"dependencies": {
 		"@stylistic/eslint-plugin": "^3.1.0",
 		"@typescript-eslint/eslint-plugin": "^8.24.0",
