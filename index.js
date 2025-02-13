@@ -3,6 +3,7 @@
 import eslint from "@eslint/js"
 import pluginStylistic from "@stylistic/eslint-plugin"
 import configPrettier from "eslint-config-prettier"
+import globals from "globals"
 // @ts-expect-error cjs module
 import pluginImport from "eslint-plugin-import"
 import pluginJsxA11y from "eslint-plugin-jsx-a11y"
@@ -10,22 +11,29 @@ import pluginPerfectionist from "eslint-plugin-perfectionist"
 import pluginReact from "eslint-plugin-react"
 import pluginReactHooks from "eslint-plugin-react-hooks"
 import pluginReactRefresh from "eslint-plugin-react-refresh"
-import globals from "globals"
 import tseslint from "typescript-eslint"
 
-/** @typedef ConfigProps
-	@prop import {boolean=}
-	@prop perfectionist {boolean | "alphabetical" | "line-length" | "natural"=}
-	@prop prettier {boolean=}
-	@prop react {Partial<{ refresh: boolean | "vite", version: `${number}` | "detect" }> | boolean=}
-	@prop typescript {Partial<{ typeChecked: "only" | boolean, strict: boolean; }> | boolean=}
-	@prop stylistic {boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions, "flat">}
-*/
+/** @typedef Options
+ * @prop [import] {boolean} default: true
+ * @prop [perfectionist] {boolean | "alphabetical" | "line-length" | "natural"} default: true
+ * @prop [prettier] {boolean}
+ * The default of this config is to use stylistic.
+ * However, the prettier plugin can be enabled if it is preferred over using ESLint as a formatter.
+ *
+ * default: false
+ * @prop [react] {Partial<{ refresh: boolean | "vite", version: `${number}` | "detect" }> | boolean} default: false
+ * @prop [stylistic] {boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions, "flat">} default: true
+ * @prop [typescript] {Partial<{ typeChecked: "only" | boolean, strict: boolean; }> | boolean}
+ * It is expected that this config will be used in Typescript projects,
+ * however typescript plugins can be disabled if the project is Javascript
+ *
+ * default: true
+ */
 
 /**
  * # eslint-config-noodle
- * A function that generates an opinionated and customisable flat config array
- * @param {ConfigProps} props
+ * Generates an opinionated and customisable eslint flat-config array
+ * @param {Options} options
  * @returns {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray}
  */
 export default function generateConfig({
