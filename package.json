@@ -1,5 +1,22 @@
 {
 	"name": "eslint-config-noodle",
+	"version": "1.0.0",
+	"description": "An easy to use eslint config generator to help me setup faster.",
+	"repository": {
+		"type": "git",
+		"url": "github:saintnoodle/eslint-config-noodle"
+	},
+	"homepage": "https://github.com/saintnoodle/eslint-config-noodle#readme",
+	"keywords": [
+		"eslint",
+		"config"
+	],
+	"author": {
+		"name": "saintnoodle",
+		"email": "hi@noodle.moe",
+		"url": "https://noodle.moe"
+	},
+	"license": "MIT",
 	"module": "index.ts",
 	"type": "module",
 	"dependencies": {
