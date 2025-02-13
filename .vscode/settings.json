@@ -1,0 +1,55 @@
+{
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "never",
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	},
+	"eslint.format.enable": true,
+	"eslint.validate": [
+		"javascript",
+	],
+	"eslint.codeActionsOnSave.mode": "all",
+	"eslint.rules.customizations": [
+		{
+			"rule": "*indent",
+			"severity": "off"
+		},
+		{
+			"rule": "*spacing",
+			"severity": "off"
+		},
+		{
+			"rule": "*order",
+			"severity": "off"
+		},
+		{
+			"rule": "*sort-*",
+			"severity": "off"
+		},
+		{
+			"rule": "*spaces",
+			"severity": "off"
+		},
+		{
+			"rule": "*dangle",
+			"severity": "off"
+		},
+		{
+			"rule": "*newline",
+			"severity": "off"
+		},
+		{
+			"rule": "*quotes",
+			"severity": "off"
+		},
+		{
+			"rule": "*semi",
+			"severity": "off"
+		},
+	],
+}
