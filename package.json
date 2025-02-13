@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-noodle",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "An easy to use eslint config generator to help me setup faster.",
 	"repository": {
 		"type": "git",

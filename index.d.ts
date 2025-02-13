@@ -1,61 +1,50 @@
-/** @typedef Options
- * @prop [import] {boolean} default: true
- * @prop [perfectionist] {boolean | "alphabetical" | "line-length" | "natural"} default: true
- * @prop [prettier] {boolean}
- * The default of this config is to use stylistic.
- * However, the prettier plugin can be enabled if it is preferred over using ESLint as a formatter.
- *
- * default: false
- * @prop [react] {Partial<{ refresh: boolean | "vite", version: number | "detect" }> | boolean} default: false
- * @prop [stylistic] {boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions, "flat">} default: true
- * @prop [typescript] {Partial<{ typeChecked: "only" | boolean, strict: boolean; }> | boolean}
- * It is expected that this config will be used in Typescript projects,
- * however typescript plugins can be disabled if the project is Javascript
- *
- * default: true
- */
+import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
+
 /**
  * # eslint-config-noodle
  * Generates an opinionated and customisable eslint flat-config array
  * @param {Options} options
  * @returns {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray}
  */
-export default function generateConfig({ import: optionImport, perfectionist: optionPerfectionist, prettier: optionPrettier, react: optionReact, stylistic: optionStylistic, typescript: optionTypescript, }: Options): import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray;
-export type Options = {
+export default function generateConfig({ import: optionImport, perfectionist, prettier, react, stylistic, typescript }: Options): import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray;
+export interface Options {
     /**
-     * default: true
+     * @default
+	 * true
      */
-    import?: boolean | undefined;
+    import?: boolean;
     /**
-     * default: true
+     * @default
+	 * true
      */
-    perfectionist?: boolean | "alphabetical" | "line-length" | "natural" | undefined;
+    perfectionist?: boolean | "alphabetical" | "line-length" | "natural";
     /**
      * The default of this config is to use stylistic.
      * However, the prettier plugin can be enabled if it is preferred over using ESLint as a formatter.
      *
-     * default: false
+     * @default
+	 * false
      */
-    prettier?: boolean | undefined;
+    prettier?: boolean;
     /**
-     * default: false
+     * @default
+	 * false
      */
-    react?: boolean | Partial<{
-        refresh: boolean | "vite";
-        version: number | "detect";
-    }> | undefined;
+    react?: boolean | ReactOptions;
     /**
-     * default: true
+     * @default 
+	 * true
      */
-    stylistic?: boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions<true>, "flat"> | undefined;
+    stylistic?: boolean | FlatStylisticCustomizeOptions;
     /**
      * It is expected that this config will be used in Typescript projects,
      * however typescript plugins can be disabled if the project is Javascript
      *
-     * default: true
+     * @default
+	 * true
      */
-    typescript?: boolean | Partial<{
-        typeChecked: "only" | boolean;
-        strict: boolean;
-    }> | undefined;
-};
+    typescript?: boolean | TypescriptOptions;
+}
+export interface ReactOptions { refresh?: boolean | "vite"; version?: number | "detect"; }
+export interface TypescriptOptions { typeChecked: "only" | boolean; strict: boolean; }
+export type FlatStylisticCustomizeOptions = Omit<StylisticCustomizeOptions<true>, "flat">;
