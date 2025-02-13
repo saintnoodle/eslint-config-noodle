@@ -21,7 +21,7 @@ import tseslint from "typescript-eslint"
  * However, the prettier plugin can be enabled if it is preferred over using ESLint as a formatter.
  *
  * default: false
- * @prop [react] {Partial<{ refresh: boolean | "vite", version: `${number}` | "detect" }> | boolean} default: false
+ * @prop [react] {Partial<{ refresh: boolean | "vite", version: number | "detect" }> | boolean} default: false
  * @prop [stylistic] {boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions, "flat">} default: true
  * @prop [typescript] {Partial<{ typeChecked: "only" | boolean, strict: boolean; }> | boolean}
  * It is expected that this config will be used in Typescript projects,
@@ -102,7 +102,7 @@ export default function generateConfig({
 			},
 			settings: {
 				react: {
-					version: typeof optionReact === "object" && optionReact.version ? optionReact.version : "detect",
+					version: typeof optionReact === "object" && String(optionReact.version) ? optionReact.version : "detect",
 				},
 			},
 		}
