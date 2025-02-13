@@ -1,12 +1,11 @@
 import type { StylisticCustomizeOptions } from "@stylistic/eslint-plugin";
+import type { FlatConfig } from "@typescript-eslint/utils/ts-eslint";
 
 /**
  * # eslint-config-noodle
  * Generates an opinionated and customisable eslint flat-config array
- * @param {Options} options
- * @returns {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray}
  */
-export default function generateConfig({ import: optionImport, perfectionist, prettier, react, stylistic, typescript }: Options): import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray;
+export default function generateConfig({ import: optionImport, perfectionist, prettier, react, stylistic, typescript }: Options): FlatConfig.ConfigArray;
 export interface Options {
     /**
      * @default

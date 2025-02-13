@@ -14,28 +14,14 @@ import pluginReactHooks from "eslint-plugin-react-hooks"
 import pluginReactRefresh from "eslint-plugin-react-refresh"
 import tseslint from "typescript-eslint"
 
-/** @typedef Options
- * @prop [import] {boolean} default: true
- * @prop [perfectionist] {boolean | "alphabetical" | "line-length" | "natural"} default: true
- * @prop [prettier] {boolean}
- * The default of this config is to use stylistic.
- * However, the prettier plugin can be enabled if it is preferred over using ESLint as a formatter.
- *
- * default: false
- * @prop [react] {Partial<{ refresh: boolean | "vite", version: number | "detect" }> | boolean} default: false
- * @prop [stylistic] {boolean | Omit<import("@stylistic/eslint-plugin").StylisticCustomizeOptions, "flat">} default: true
- * @prop [typescript] {Partial<{ typeChecked: "only" | boolean, strict: boolean; }> | boolean}
- * It is expected that this config will be used in Typescript projects,
- * however typescript plugins can be disabled if the project is Javascript
- *
- * default: true
+/**
+ * @typedef {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} FlatConfig
  */
 
 /**
  * # eslint-config-noodle
  * Generates an opinionated and customisable eslint flat-config array
- * @param {Options} options
- * @returns {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray}
+ * @type {import("./index")["default"]}
  */
 export default function generateConfig({
 	import: optionImport = true,
@@ -44,18 +30,18 @@ export default function generateConfig({
 	react: optionReact = false,
 	stylistic: optionStylistic = true,
 	typescript: optionTypescript = true,
-}) {
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray} */
+} = {}) {
+	/** @type {FlatConfig[]} */
 	let eslintImport = []
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} */
+	/** @type {FlatConfig} */
 	let eslintPerfectionist = {}
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} */
+	/** @type {FlatConfig} */
 	let eslintPrettier = {}
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray} */
+	/** @type {FlatConfig[]} */
 	let eslintReact = []
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.ConfigArray} */
+	/** @type {FlatConfig[]} */
 	let eslintTs = []
-	/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} */
+	/** @type {FlatConfig} */
 	let eslintStylistic = {}
 
 	if (optionImport) {
@@ -75,12 +61,12 @@ export default function generateConfig({
 	}
 
 	if (optionReact) {
-		/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config["rules"]} */
+		/** @type {FlatConfig["rules"]} */
 		const reactRefreshRules = typeof optionReact === "object" && optionReact.refresh
 			? pluginReactRefresh.configs[optionReact.refresh === "vite" ? "vite" : "recommended"].rules
 			: {}
 
-		/** @type {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} */
+		/** @type {FlatConfig} */
 		const reactConfig = {
 			files: ["**/*.{t,j}sx"],
 			languageOptions: {
