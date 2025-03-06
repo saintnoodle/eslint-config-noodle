@@ -9,7 +9,6 @@ import pluginImport from "eslint-plugin-import"
 import pluginJsxA11y from "eslint-plugin-jsx-a11y"
 import pluginPerfectionist from "eslint-plugin-perfectionist"
 import pluginReact from "eslint-plugin-react"
-// @ts-expect-error no types available
 import pluginReactHooks from "eslint-plugin-react-hooks"
 import pluginReactRefresh from "eslint-plugin-react-refresh"
 import tseslint from "typescript-eslint"
@@ -88,7 +87,7 @@ export default function generateConfig({
 			},
 			settings: {
 				react: {
-					version: typeof optionReact === "object" && String(optionReact.version) ? optionReact.version : "detect",
+					version: typeof optionReact === "object" && optionReact.version ? String(optionReact.version) : "detect",
 				},
 			},
 		}
@@ -141,6 +140,12 @@ export default function generateConfig({
 
 	return tseslint.config(
 		eslint.configs.recommended,
+		{
+			rules: {
+				// Let TS handle this
+				"@typescript-eslint/no-unused-vars": "off",
+			},
+		},
 		...eslintTs,
 		...eslintReact,
 		eslintPerfectionist,
