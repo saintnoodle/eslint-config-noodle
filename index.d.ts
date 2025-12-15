@@ -16,6 +16,11 @@ export interface Options {
      * @default
 	 * true
      */
+    jsx?: boolean;
+    /**
+     * @default
+     * false
+     */
     perfectionist?: boolean | "alphabetical" | "line-length" | "natural";
     /**
      * The default of this config is to use stylistic.
@@ -31,7 +36,7 @@ export interface Options {
      */
     react?: boolean | ReactOptions;
     /**
-     * @default 
+     * @default
 	 * true
      */
     stylistic?: boolean | FlatStylisticCustomizeOptions;

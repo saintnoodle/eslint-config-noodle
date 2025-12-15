@@ -1,0 +1,27 @@
+{
+	"languages": {
+		"JavaScript": {
+			"formatter": [],
+			"code_actions_on_format": {
+				"source.fixAll.eslint": true
+			}
+		}
+	},
+	"lsp": {
+    	"eslint": {
+      		"settings": {
+        		"rulesCustomizations": [
+          			{ "rule": "@stylistic/*", "severity": "off" },
+            		{ "rule": "*-indent", "severity": "off" },
+             		{ "rule": "*-spacing", "severity": "off" },
+              		{ "rule": "*-spaces", "severity": "off" },
+              		{ "rule": "*-order", "severity": "off" },
+              		{ "rule": "*-dangle", "severity": "off" },
+              		{ "rule": "*-newline", "severity": "off" },
+              		{ "rule": "*quotes", "severity": "off" },
+              		{ "rule": "*semi", "severity": "off" }
+         		]
+       		}
+        }
+    }
+}

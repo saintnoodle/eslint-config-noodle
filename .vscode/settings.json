@@ -7,11 +7,11 @@
 		"source.fixAll.stylelint": "explicit"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
 	"eslint.format.enable": true,
 	"eslint.validate": [
-		"javascript",
+		"javascript"
 	],
 	"eslint.codeActionsOnSave.mode": "all",
 	"eslint.rules.customizations": [
@@ -50,6 +50,6 @@
 		{
 			"rule": "*semi",
 			"severity": "off"
-		},
-	],
+		}
+	]
 }

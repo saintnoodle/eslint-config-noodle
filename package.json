@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-noodle",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "An easy to use eslint config generator to help me setup faster.",
 	"repository": {
 		"type": "git",
@@ -25,29 +25,27 @@
 		"index.d.ts"
 	],
 	"dependencies": {
-		"@stylistic/eslint-plugin": "^3.1.0",
-		"@typescript-eslint/eslint-plugin": "^8.26.0",
-		"@typescript-eslint/parser": "^8.26.0",
-		"@typescript-eslint/utils": "^8.26.0",
-		"eslint-config-prettier": "^10.0.2",
-		"eslint-import-resolver-typescript": "^3.8.3",
-		"eslint-plugin-import": "^2.31.0",
+		"@stylistic/eslint-plugin": "^5.6.1",
+		"@typescript-eslint/eslint-plugin": "^8.50.0",
+		"@typescript-eslint/parser": "^8.50.0",
+		"@typescript-eslint/utils": "^8.50.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-import": "^2.32.0",
 		"eslint-plugin-jsx-a11y": "^6.10.2",
-		"eslint-plugin-perfectionist": "^3.9.1",
-		"eslint-plugin-react": "^7.37.4",
-		"eslint-plugin-react-hooks": "^5.2.0",
-		"eslint-plugin-react-refresh": "^0.4.19",
-		"globals": "^15.15.0",
-		"typescript-eslint": "^8.26.0"
+		"eslint-plugin-perfectionist": "^4.15.1",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"eslint-plugin-react-refresh": "^0.4.25",
+		"globals": "^16.5.0",
+		"typescript-eslint": "^8.50.0"
 	},
 	"devDependencies": {
-		"@types/eslint-config-prettier": "^6.11.3",
-		"@types/eslint-plugin-jsx-a11y": "^6.10.0",
 		"@types/eslint__js": "^8.42.3",
-		"eslint": "^9.21.0"
+		"eslint": "^9.39.2"
 	},
 	"peerDependencies": {
-		"typescript": "^5.7.3",
-		"eslint": "^9.20.1"
+		"typescript": "^5.8.3",
+		"eslint": "^9.39.2"
 	}
 }

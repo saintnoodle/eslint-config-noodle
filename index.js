@@ -2,45 +2,46 @@
 
 import eslint from "@eslint/js"
 import pluginStylistic from "@stylistic/eslint-plugin"
+import { defineConfig } from "eslint/config"
 import configPrettier from "eslint-config-prettier"
-import globals from "globals"
-// @ts-expect-error cjs module
 import pluginImport from "eslint-plugin-import"
 import pluginJsxA11y from "eslint-plugin-jsx-a11y"
 import pluginPerfectionist from "eslint-plugin-perfectionist"
 import pluginReact from "eslint-plugin-react"
 import pluginReactHooks from "eslint-plugin-react-hooks"
 import pluginReactRefresh from "eslint-plugin-react-refresh"
+import globals from "globals"
 import tseslint from "typescript-eslint"
 
 /**
- * @typedef {import("@typescript-eslint/utils/ts-eslint").FlatConfig.Config} FlatConfig
+ * @typedef {import("eslint/config").Config} Config
  */
 
 /**
  * # eslint-config-noodle
- * Generates an opinionated and customisable eslint flat-config array
+ * Generates an opinionated and customisable eslint config
  * @type {import("./index")["default"]}
  */
 export default function generateConfig({
 	import: optionImport = true,
+	jsx: optionJsx = false,
 	perfectionist: optionPerfectionist = true,
 	prettier: optionPrettier = false,
 	react: optionReact = false,
 	stylistic: optionStylistic = true,
 	typescript: optionTypescript = true,
 } = {}) {
-	/** @type {FlatConfig[]} */
+	/** @type {Config[]} */
 	let eslintImport = []
-	/** @type {FlatConfig} */
+	/** @type {Config} */
 	let eslintPerfectionist = {}
-	/** @type {FlatConfig} */
+	/** @type {Config} */
 	let eslintPrettier = {}
-	/** @type {FlatConfig[]} */
+	/** @type {Config[]} */
 	let eslintReact = []
-	/** @type {FlatConfig[]} */
+	/** @type {Config[]} */
 	let eslintTs = []
-	/** @type {FlatConfig} */
+	/** @type {Config} */
 	let eslintStylistic = {}
 
 	if (optionImport) {
@@ -60,12 +61,12 @@ export default function generateConfig({
 	}
 
 	if (optionReact) {
-		/** @type {FlatConfig["rules"]} */
+		/** @type {Config["rules"]} */
 		const reactRefreshRules = typeof optionReact === "object" && optionReact.refresh
 			? pluginReactRefresh.configs[optionReact.refresh === "vite" ? "vite" : "recommended"].rules
 			: {}
 
-		/** @type {FlatConfig} */
+		/** @type {Config} */
 		const reactConfig = {
 			files: ["**/*.{t,j}sx"],
 			languageOptions: {
@@ -121,7 +122,6 @@ export default function generateConfig({
 
 	if (optionStylistic) {
 		eslintStylistic = pluginStylistic.configs.customize({
-			flat: true,
 			...(typeof optionStylistic === "object"
 				? optionStylistic
 				: {
@@ -130,7 +130,7 @@ export default function generateConfig({
 						braceStyle: "1tbs",
 						commaDangle: "always-multiline",
 						indent: "tab",
-						jsx: optionReact ? true : false,
+						jsx: (optionReact || optionJsx) ? true : false,
 						quoteProps: "as-needed",
 						quotes: "double",
 						semi: false,
@@ -138,7 +138,7 @@ export default function generateConfig({
 		})
 	}
 
-	return tseslint.config(
+	return defineConfig(
 		eslint.configs.recommended,
 		{
 			rules: {
