@@ -2,7 +2,6 @@
 
 import eslint from "@eslint/js"
 import pluginStylistic from "@stylistic/eslint-plugin"
-import { defineConfig } from "eslint/config"
 import configPrettier from "eslint-config-prettier"
 import pluginImport from "eslint-plugin-import"
 import pluginJsxA11y from "eslint-plugin-jsx-a11y"
@@ -10,6 +9,7 @@ import pluginPerfectionist from "eslint-plugin-perfectionist"
 import pluginReact from "eslint-plugin-react"
 import pluginReactHooks from "eslint-plugin-react-hooks"
 import pluginReactRefresh from "eslint-plugin-react-refresh"
+import { defineConfig } from "eslint/config"
 import globals from "globals"
 import tseslint from "typescript-eslint"
 
